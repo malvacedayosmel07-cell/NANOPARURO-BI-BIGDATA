@@ -1,0 +1,1325 @@
+{
+  "datasets": [
+    {
+      "name": "b01b42fc",
+      "displayName": "ventas_limpias",
+      "config": {
+        "version": "1.1",
+        "source": "workspace.bi_nanoparuro.ventas_limpias",
+        "dimensions": [
+          {
+            "expr": "source.*"
+          }
+        ],
+        "measures": [
+          {
+            "name": "count",
+            "expr": "COUNT(*)",
+            "comment": "Represents the total number of rows in the dataset. Use this measure to count all",
+            "displayName": "Count"
+          }
+        ]
+      }
+    }
+  ],
+  "pages": [
+    {
+      "name": "498e5b71",
+      "displayName": "Resumen comercial.",
+      "layout": [
+        {
+          "widget": {
+            "name": "ventas-totales-s",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "sum(ImporteVenta)",
+                      "expression": "SUM(`ImporteVenta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "**Ventas totales (S/)**",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(ImporteVenta)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "none",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    },
+                    "negativeSign": "standard"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 7,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "total-de-pedidos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "count(OrderID)",
+                      "expression": "COUNT(`OrderID`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "**Total de pedidos**",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "count(OrderID)",
+                  "format": {
+                    "type": "number-plain",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "max",
+                      "places": 2
+                    }
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 7,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "unidades-vendidas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "sum(Cantidad)",
+                      "expression": "SUM(`Cantidad`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Unidades vendidas",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(Cantidad)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 7,
+            "y": 7,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "total-clientes",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "countdistinct(CustomerID)",
+                      "expression": "COUNT(DISTINCT `CustomerID`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Total de clientes",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "countdistinct(CustomerID)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 9,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "total-productos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "countdistinct(ProductID)",
+                      "expression": "COUNT(DISTINCT `ProductID`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Total de productos",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "countdistinct(ProductID)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 9,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "ticket-promedio-s",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "avg(ImporteVenta)",
+                      "expression": "AVG(`ImporteVenta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Ticket promedio (S/)",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(ImporteVenta)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 7,
+            "y": 9,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "calificacion-promedio",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "avg(Calificacion)",
+                      "expression": "AVG(`Calificacion`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "**Calificación promedio**",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(Calificacion)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 11,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "tiempo-promedio-entrega-dias",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "avg(DiasEntrega)",
+                      "expression": "AVG(`DiasEntrega`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Tiempo promedio de entrega (días)",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "avg(DiasEntrega)"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 4,
+            "y": 11,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "costo-total-de-flete-s",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "sum(CostoFlete)",
+                      "expression": "SUM(`CostoFlete`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "Costo total de flete (S/)",
+                  "fields": []
+                }
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "sum(CostoFlete)",
+                  "format": {
+                    "type": "number-currency",
+                    "currencyCode": "USD",
+                    "abbreviation": "compact",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 2
+                    },
+                    "significantFigures": {
+                      "type": "all"
+                    },
+                    "negativeSign": "standard"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 7,
+            "y": 11,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "ventas-por-categoria-de-productos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "Categoria",
+                      "expression": "`Categoria`"
+                    },
+                    {
+                      "name": "sum(ImporteVenta)",
+                      "expression": "SUM(`ImporteVenta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Ventas por categoría de productos</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Categoria",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(ImporteVenta)",
+                  "displayName": "Ventas totales (S/)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 13,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "evolucion-mensual-ventas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "monthly(FechaVenta)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `FechaVenta`)"
+                    },
+                    {
+                      "name": "sum(ImporteVenta)",
+                      "expression": "SUM(`ImporteVenta`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Evolución mensual de ventas</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "mark": {
+                "lineShape": "smooth"
+              },
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(FechaVenta)",
+                  "displayName": "Meses",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(ImporteVenta)",
+                  "displayName": "\tVentas totales (S/)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 19,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "ranking-productos-mas-vendidos",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "sum(Cantidad)",
+                      "expression": "SUM(`Cantidad`)"
+                    },
+                    {
+                      "name": "NombreProducto",
+                      "expression": "`NombreProducto`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Ranking de productos más vendidos</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(Cantidad)",
+                  "displayName": "Unidades vendidas.",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "NombreProducto",
+                  "displayName": "Productos.",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 25,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "distribucion-ventas-region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "sum(ImporteVenta)",
+                      "expression": "SUM(`ImporteVenta`)"
+                    },
+                    {
+                      "name": "Region",
+                      "expression": "`Region`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Distribución de ventas por región</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(ImporteVenta)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Participación de ventas (%)"
+                },
+                "color": {
+                  "fieldName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 31,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "ventas-por-tipo-de-cliente",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "sum(ImporteVenta)",
+                      "expression": "SUM(`ImporteVenta`)"
+                    },
+                    {
+                      "name": "TipoCliente",
+                      "expression": "`TipoCliente`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Ventas por tipo de cliente</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(ImporteVenta)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Participación de ventas por cliente (%)"
+                },
+                "color": {
+                  "fieldName": "TipoCliente",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 37,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "distribucion-calificaciones-clientes",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "Calificacion",
+                      "expression": "`Calificacion`"
+                    },
+                    {
+                      "name": "countdistinct(OrderID)",
+                      "expression": "COUNT(DISTINCT `OrderID`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size:18px\">Distribución de calificaciones de los clientes</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Calificacion",
+                  "displayName": "\tCalificación del cliente",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "countdistinct(OrderID)",
+                  "displayName": "\tNúmero de pedidos",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 43,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "ranking-clientes-compras",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "sum(ImporteVenta)",
+                      "expression": "SUM(`ImporteVenta`)"
+                    },
+                    {
+                      "name": "NombreCliente",
+                      "expression": "`NombreCliente`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">**Ranking de clientes por compras**</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "sum(ImporteVenta)",
+                  "displayName": "Venta",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "NombreCliente",
+                  "displayName": "Clientes",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 49,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "tiempo-promedio-entrega-region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "avg(DiasEntrega)",
+                      "expression": "AVG(`DiasEntrega`)"
+                    },
+                    {
+                      "name": "Region",
+                      "expression": "`Region`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">**Tiempo promedio de entrega por región**</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "avg(DiasEntrega)",
+                  "displayName": "Tiempo promedio de entrega (días)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Region",
+                  "displayName": "\tRegiones",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 55,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "cumplimiento-de-entregas",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "countdistinct(OrderID)",
+                      "expression": "COUNT(DISTINCT `OrderID`)"
+                    },
+                    {
+                      "name": "CumplimientoEntrega",
+                      "expression": "`CumplimientoEntrega`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Cumplimiento de entregas</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "countdistinct(OrderID)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "CumplimientoEntrega",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 61,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "costo-total-flete-region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "Region",
+                      "expression": "`Region`"
+                    },
+                    {
+                      "name": "sum(CostoFlete)",
+                      "expression": "SUM(`CostoFlete`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Costo total de flete por región</span>",
+                  "fields": []
+                }
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Region",
+                  "displayName": "Regiones",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(CostoFlete)",
+                  "displayName": "\tCosto total de flete (S/)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 67,
+            "width": 9,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "region1",
+            "queries": [
+              {
+                "name": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_Region",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "Region",
+                      "expression": "`Region`"
+                    },
+                    {
+                      "name": "Region_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size:18px\">Región</span>",
+                  "fields": []
+                }
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Region",
+                    "queryName": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_Region"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 3,
+            "width": 4,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "categoria-productos",
+            "queries": [
+              {
+                "name": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_Categoria",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "Categoria",
+                      "expression": "`Categoria`"
+                    },
+                    {
+                      "name": "Categoria_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Categoría de productos</span>",
+                  "fields": []
+                }
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Categoria",
+                    "queryName": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_Categoria"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 5,
+            "width": 4,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "tipo-de-cliente1",
+            "queries": [
+              {
+                "name": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_TipoCliente",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "TipoCliente",
+                      "expression": "`TipoCliente`"
+                    },
+                    {
+                      "name": "TipoCliente_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size: 18px;\">Tipo de cliente</span>",
+                  "fields": []
+                }
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "TipoCliente",
+                    "queryName": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_TipoCliente"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 5,
+            "width": 4,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "fecha-de-venta",
+            "queries": [
+              {
+                "name": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_FechaVenta",
+                "query": {
+                  "datasetName": "b01b42fc",
+                  "fields": [
+                    {
+                      "name": "FechaVenta",
+                      "expression": "`FechaVenta`"
+                    },
+                    {
+                      "name": "FechaVenta_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": {
+                  "value": "<span style=\"font-size:18px\">Fecha de venta</span>",
+                  "fields": []
+                }
+              },
+              "widgetType": "filter-date-range-picker",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "FechaVenta",
+                    "queryName": "dashboards/01f1e5046bc8109c92568aec9be98de1/datasets/01f1e504c39f1409b44e34ba53d52c01_FechaVenta"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 3,
+            "width": 4,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "120adc48",
+            "spec": {
+              "widgetType": "text",
+              "version": 1,
+              "encodings": {
+                "text": {
+                  "lines": [
+                    "# NANOPARURO | Inteligencia de Negocios\n",
+                    "\n",
+                    "Dashboard interactivo de análisis de ventas, productos,<br>clientes y desempeño logístico.\n",
+                    "\n",
+                    "**Período de análisis:** Marzo - Junio 2026"
+                  ],
+                  "fields": []
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 1,
+            "y": 0,
+            "width": 9,
+            "height": 3
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
