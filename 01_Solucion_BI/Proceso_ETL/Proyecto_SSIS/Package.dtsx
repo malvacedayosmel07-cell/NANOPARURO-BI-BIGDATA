@@ -1,0 +1,1598 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="11/22/2026 6:42:58 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-SRRH4KP4"
+  DTS:CreatorName="LAPTOP-SRRH4KP4\YOSMEL"
+  DTS:DTSID="{24E0ECB8-B852-4422-BD59-5C587FEEBEE7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{0E5C29B8-13A3-4CF8-8162-2EC09C6D1FB2}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CN_Destino]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{EB72970B-568B-4A10-BE32-E8C5EDEBEAC8}"
+      DTS:ObjectName="CN_Destino">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-SRRH4KP4;Initial Catalog=BI_Nanoparuro_V2;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Trust Server Certificate=True;Application Name=SSIS-Package-{EB72970B-568B-4A10-BE32-E8C5EDEBEAC8}LAPTOP-SRRH4KP4.BI_Nanoparuro_V2;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[CN_Origen]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1CFFE527-0C13-4195-86BC-DBBFFED0C2C3}"
+      DTS:ObjectName="CN_Origen">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=LAPTOP-SRRH4KP4;Initial Catalog=BD_Nanoparuro_Origen;Provider=MSOLEDBSQL19.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package-{1CFFE527-0C13-4195-86BC-DBBFFED0C2C3}LAPTOP-SRRH4KP4.BD_Nanoparuro_Origen;Trust Server Certificate=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\00 - Limpieza STG_Ventas"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{D64FF908-51ED-4A56-8E11-9AD2E4140D85}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="00 - Limpieza STG_Ventas"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EB72970B-568B-4A10-BE32-E8C5EDEBEAC8}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE BI_Nanoparuro_V2.dbo.STG_Ventas;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\01 - Extraccion y carga STG_Ventas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tarea Flujo de datos"
+      DTS:DTSID="{37BD8B7F-56EF-4043-8F5D-350D38A80808}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="01 - Extraccion y carga STG_Ventas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destino de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;4"
+              description="Destino de OLE DB"
+              name="Destino - STG_Ventas"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[STG_Ventas]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si los valores proporcionados para columnas de identidad se van a copiar al destino. Si es False, los valores de las columnas de identidad se generan automáticamente en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indica si las columnas que contienen NULL tendrán NULL insertado en el destino. Si es False, las columnas que contienen NULL tendrán sus valores predeterminados insertados en el destino. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadKeepNulls">true</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica opciones para usar con la carga rápida. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica cuándo se emiten confirmaciones durante la inserción de datos. El valor 0 especifica que se emitirá una confirmación al final de la inserción de datos. Solo se aplica si está activada la carga rápida."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CN_Destino]"
+                  connectionManagerRefId="Package.ConnectionManagers[CN_Destino]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB]"
+                  errorOrTruncationOperation="Insertar"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrada de destino de OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[OrderID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OrderID"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[OrderID]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[CustomerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerID]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[NombreCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NombreCliente"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreCliente]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreCliente]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[TipoCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TipoCliente"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[TipoCliente]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[TipoCliente]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[ProductID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProductID"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductID]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[ProductID]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[NombreProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NombreProducto"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreProducto]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreProducto]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[Categoria]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Categoria"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Categoria]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Categoria]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[Subcategoria]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Subcategoria"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Subcategoria]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Subcategoria]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[FechaVenta]"
+                      cachedDataType="dbDate"
+                      cachedName="FechaVenta"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaVenta]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[FechaVenta]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Ciudad"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Ciudad]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Ciudad]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[Estado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Estado"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Estado]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Estado]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[CodigoPostal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="CodigoPostal"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[CodigoPostal]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CodigoPostal]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[SellerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SellerID"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[SellerID]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[SellerID]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[NombreVendedor]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NombreVendedor"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreVendedor]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreVendedor]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[Cantidad]"
+                      cachedDataType="i4"
+                      cachedName="Cantidad"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cantidad]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Cantidad]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[Precio]"
+                      cachedDataType="numeric"
+                      cachedName="Precio"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Precio]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Precio]" />
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].Columns[CostoFlete]"
+                      cachedDataType="numeric"
+                      cachedName="CostoFlete"
+                      cachedPrecision="18"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[CostoFlete]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CostoFlete]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[OrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[CustomerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NombreCliente" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[TipoCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TipoCliente" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[ProductID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NombreProducto" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Categoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Subcategoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Subcategoria" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[FechaVenta]"
+                      dataType="dbDate"
+                      name="FechaVenta" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Estado" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[CodigoPostal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="CodigoPostal" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[SellerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SellerID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[NombreVendedor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NombreVendedor" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[Precio]"
+                      dataType="numeric"
+                      name="Precio"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB].ExternalColumns[CostoFlete]"
+                      dataType="numeric"
+                      name="CostoFlete"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Outputs[Salida de error de destino de OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de destino de OLE DB"
+                  synchronousInputId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Outputs[Salida de error de destino de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Origen de OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;7"
+              description="Origen de OLE DB"
+              name="Origen - Ventas Transaccionales"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Número de segundos antes de que se agote el tiempo de espera de un comando. Un valor de 0 indica un tiempo de espera infinito."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowset">[dbo].[Ventas_Transaccionales]</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica la variable que contiene el nombre del objeto de base de datos usado para abrir un conjunto de filas."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Comando SQL para ejecutar."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable que contiene el comando SQL para ejecutar."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica la página de códigos de columna para utilizar cuando la información de página de códigos no está disponible en el origen de datos."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Fuerza el uso del valor de la propiedad DefaultCodePage al describir datos de caracteres."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Especifica el modo utilizado para obtener acceso a la base de datos."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Asignaciones entre los parámetros del comando SQL y las variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[CN_Origen]"
+                  connectionManagerRefId="Package.ConnectionManagers[CN_Origen]"
+                  description="La conexión de tiempo de ejecución OLE DB usada para obtener acceso a la base de datos."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB]"
+                  name="Salida de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[OrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[OrderID]"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[OrderID]"
+                      name="OrderID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CustomerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[CustomerID]"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[NombreCliente]"
+                      length="150"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreCliente]"
+                      name="NombreCliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[TipoCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[TipoCliente]"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[TipoCliente]"
+                      name="TipoCliente"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
+                      name="ProductID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[NombreProducto]"
+                      length="150"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreProducto]"
+                      name="NombreProducto"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Categoria]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Categoria]"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Categoria]"
+                      name="Categoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Subcategoria]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Subcategoria]"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Subcategoria]"
+                      name="Subcategoria"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[FechaVenta]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[FechaVenta]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[FechaVenta]"
+                      name="FechaVenta"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Ciudad]"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Ciudad]"
+                      name="Ciudad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Estado]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Estado]"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Estado]"
+                      name="Estado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Region]"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CodigoPostal]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[CodigoPostal]"
+                      length="20"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CodigoPostal]"
+                      name="CodigoPostal"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[SellerID]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[SellerID]"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[SellerID]"
+                      name="SellerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreVendedor]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[NombreVendedor]"
+                      length="150"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreVendedor]"
+                      name="NombreVendedor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Cantidad]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Cantidad]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Cantidad]"
+                      name="Cantidad"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Precio]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Precio]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Precio]"
+                      name="Precio"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CostoFlete]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversión"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[CostoFlete]"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CostoFlete]"
+                      name="CostoFlete"
+                      precision="18"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[OrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="OrderID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[CustomerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[NombreCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NombreCliente" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[TipoCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TipoCliente" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[ProductID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="ProductID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[NombreProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NombreProducto" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Categoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Categoria" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Subcategoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Subcategoria" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[FechaVenta]"
+                      dataType="dbDate"
+                      name="FechaVenta" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Ciudad" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Estado" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[CodigoPostal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="CodigoPostal" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[SellerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="SellerID" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[NombreVendedor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="NombreVendedor" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Cantidad]"
+                      dataType="i4"
+                      name="Cantidad" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[Precio]"
+                      dataType="numeric"
+                      name="Precio"
+                      precision="18"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].ExternalColumns[CostoFlete]"
+                      dataType="numeric"
+                      name="CostoFlete"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB]"
+                  isErrorOut="true"
+                  name="Salida de error de origen de OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[OrderID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[OrderID]"
+                      name="OrderID" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[CustomerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[CustomerID]"
+                      name="CustomerID" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[NombreCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[NombreCliente]"
+                      name="NombreCliente" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[TipoCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[TipoCliente]"
+                      name="TipoCliente" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[ProductID]"
+                      name="ProductID" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[NombreProducto]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[NombreProducto]"
+                      name="NombreProducto" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Categoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Categoria]"
+                      name="Categoria" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Subcategoria]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Subcategoria]"
+                      name="Subcategoria" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[FechaVenta]"
+                      dataType="dbDate"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[FechaVenta]"
+                      name="FechaVenta" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Ciudad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Ciudad]"
+                      name="Ciudad" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Estado]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Estado]"
+                      name="Estado" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Region]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[CodigoPostal]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[CodigoPostal]"
+                      name="CodigoPostal" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[SellerID]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[SellerID]"
+                      name="SellerID" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[NombreVendedor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[NombreVendedor]"
+                      name="NombreVendedor" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Cantidad]"
+                      dataType="i4"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Cantidad]"
+                      name="Cantidad" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Precio]"
+                      dataType="numeric"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[Precio]"
+                      name="Precio"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[CostoFlete]"
+                      dataType="numeric"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[CostoFlete]"
+                      name="CostoFlete"
+                      precision="18"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de error de origen de OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Columna derivada;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;0"
+              description="Crea nuevos valores de columna aplicando expresiones a las columnas de entrada de la transformación. Crea nuevas columnas o sobrescribe las columnas existentes. Por ejemplo, se concatenan los valores de las columnas 'nombre' y 'apellidos' para crear una columna 'nombre completo'."
+              name="Transformacion - Limpieza de datos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada]"
+                  description="Entrada en la transformación Columna derivada"
+                  name="Entrada de columna derivada">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[OrderID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="OrderID"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[OrderID]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[OrderID]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(OrderID)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[CustomerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CustomerID"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CustomerID]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CustomerID]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(CustomerID)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[NombreCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NombreCliente"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreCliente]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreCliente]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(NombreCliente)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[TipoCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TipoCliente"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[TipoCliente]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[TipoCliente]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(TipoCliente)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[ProductID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="ProductID"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[ProductID]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[ProductID]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(ProductID)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[NombreProducto]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NombreProducto"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreProducto]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreProducto]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(NombreProducto)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[Categoria]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Categoria"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Categoria]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Categoria]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Categoria)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[Subcategoria]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Subcategoria"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Subcategoria]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Subcategoria]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Subcategoria)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[Ciudad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Ciudad"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Ciudad]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Ciudad]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Ciudad)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[Estado]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Estado"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Estado]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Estado]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Estado)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[Region]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Region"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Region]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[Region]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(Region)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[CodigoPostal]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="CodigoPostal"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CodigoPostal]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[CodigoPostal]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(CodigoPostal)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[SellerID]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="SellerID"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[SellerID]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[SellerID]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(SellerID)</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada].Columns[NombreVendedor]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="NombreVendedor"
+                      errorOrTruncationOperation="Cálculo"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreVendedor]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión de columna derivada"
+                          name="Expression">[TRIM](#{Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB].Columns[NombreVendedor]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Expresión descriptiva de columna derivada"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(NombreVendedor)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Outputs[Salida de columna derivada]"
+                  description="Salida predeterminada de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  name="Salida de columna derivada"
+                  synchronousInputId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Outputs[Salida de error de columna derivada]"
+                  description="Salida de error de la transformación Columna derivada"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Salida de error de columna derivada"
+                  synchronousInputId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Outputs[Salida de error de columna derivada].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Outputs[Salida de error de columna derivada].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\01 - Extraccion y carga STG_Ventas.Paths[Salida de columna derivada]"
+              endId="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas.Inputs[Entrada de destino de OLE DB]"
+              name="Salida de columna derivada"
+              startId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Outputs[Salida de columna derivada]" />
+            <path
+              refId="Package\01 - Extraccion y carga STG_Ventas.Paths[Salida de origen de OLE DB]"
+              endId="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos.Inputs[Entrada de columna derivada]"
+              name="Salida de origen de OLE DB"
+              startId="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales.Outputs[Salida de origen de OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\02 - Carga de dimensiones"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{9B4CD582-EFA3-418A-B79D-99923B5890AF}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="02 - Carga de dimensiones"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EB72970B-568B-4A10-BE32-E8C5EDEBEAC8}"
+          SQLTask:SqlStatementSource="USE BI_Nanoparuro_V2;&#xA;&#xA;SET XACT_ABORT ON;&#xA;&#xA;BEGIN TRANSACTION;&#xA;&#xA;-- ==========================================&#xA;-- 1. CARGA DIM_CLIENTE&#xA;-- ==========================================&#xA;&#xA;INSERT INTO dbo.DIM_CLIENTE&#xA;(&#xA;    CustomerID,&#xA;    NombreCliente,&#xA;    TipoCliente&#xA;)&#xA;SELECT&#xA;    s.CustomerID,&#xA;    MAX(s.NombreCliente),&#xA;    MAX(s.TipoCliente)&#xA;FROM dbo.STG_Ventas s&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM dbo.DIM_CLIENTE d&#xA;    WHERE d.CustomerID = s.CustomerID&#xA;)&#xA;GROUP BY s.CustomerID;&#xA;&#xA;&#xA;-- ==========================================&#xA;-- 2. CARGA DIM_PRODUCTO&#xA;-- ==========================================&#xA;&#xA;INSERT INTO dbo.DIM_PRODUCTO&#xA;(&#xA;    ProductID,&#xA;    NombreProducto,&#xA;    Categoria,&#xA;    Subcategoria&#xA;)&#xA;SELECT&#xA;    s.ProductID,&#xA;    MAX(s.NombreProducto),&#xA;    MAX(s.Categoria),&#xA;    MAX(s.Subcategoria)&#xA;FROM dbo.STG_Ventas s&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM dbo.DIM_PRODUCTO d&#xA;    WHERE d.ProductID = s.ProductID&#xA;)&#xA;GROUP BY s.ProductID;&#xA;&#xA;&#xA;-- ==========================================&#xA;-- 3. CARGA DIM_GEOGRAFIA&#xA;-- ==========================================&#xA;&#xA;INSERT INTO dbo.DIM_GEOGRAFIA&#xA;(&#xA;    Ciudad,&#xA;    Estado,&#xA;    Region,&#xA;    CodigoPostal&#xA;)&#xA;SELECT DISTINCT&#xA;    s.Ciudad,&#xA;    s.Estado,&#xA;    s.Region,&#xA;    s.CodigoPostal&#xA;FROM dbo.STG_Ventas s&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM dbo.DIM_GEOGRAFIA d&#xA;    WHERE d.Ciudad IS NOT DISTINCT FROM s.Ciudad&#xA;      AND d.Estado IS NOT DISTINCT FROM s.Estado&#xA;      AND d.Region IS NOT DISTINCT FROM s.Region&#xA;      AND d.CodigoPostal IS NOT DISTINCT FROM s.CodigoPostal&#xA;);&#xA;&#xA;&#xA;-- ==========================================&#xA;-- 4. CARGA DIM_FECHA&#xA;-- ==========================================&#xA;&#xA;SET LANGUAGE Spanish;&#xA;&#xA;INSERT INTO dbo.DIM_FECHA&#xA;(&#xA;    FechaKey,&#xA;    Fecha,&#xA;    Dia,&#xA;    Mes,&#xA;    NombreMes,&#xA;    Trimestre,&#xA;    [Año]&#xA;)&#xA;SELECT DISTINCT&#xA;    CONVERT(INT, CONVERT(CHAR(8), s.FechaVenta, 112)),&#xA;    s.FechaVenta,&#xA;    DAY(s.FechaVenta),&#xA;    MONTH(s.FechaVenta),&#xA;    DATENAME(MONTH, s.FechaVenta),&#xA;    DATEPART(QUARTER, s.FechaVenta),&#xA;    YEAR(s.FechaVenta)&#xA;FROM dbo.STG_Ventas s&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM dbo.DIM_FECHA d&#xA;    WHERE d.FechaKey =&#xA;        CONVERT(INT, CONVERT(CHAR(8), s.FechaVenta, 112))&#xA;);&#xA;&#xA;&#xA;-- ==========================================&#xA;-- 5. CARGA DIM_VENDEDOR&#xA;-- ==========================================&#xA;&#xA;INSERT INTO dbo.DIM_VENDEDOR&#xA;(&#xA;    SellerID,&#xA;    NombreVendedor&#xA;)&#xA;SELECT&#xA;    s.SellerID,&#xA;    MAX(s.NombreVendedor)&#xA;FROM dbo.STG_Ventas s&#xA;WHERE NOT EXISTS (&#xA;    SELECT 1&#xA;    FROM dbo.DIM_VENDEDOR d&#xA;    WHERE d.SellerID = s.SellerID&#xA;)&#xA;GROUP BY s.SellerID;&#xA;&#xA;COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\03 - Carga FACT_VENTAS"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{CCCD9A13-162C-4F5E-BE20-480CD2EA7508}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="03 - Carga FACT_VENTAS"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{EB72970B-568B-4A10-BE32-E8C5EDEBEAC8}"
+          SQLTask:SqlStatementSource="USE BI_Nanoparuro_V2;&#xA;&#xA;SET XACT_ABORT ON;&#xA;&#xA;BEGIN TRANSACTION;&#xA;&#xA;DELETE FROM dbo.FACT_VENTAS;&#xA;&#xA;INSERT INTO dbo.FACT_VENTAS&#xA;(&#xA;    ClienteKey,&#xA;    ProductoKey,&#xA;    FechaKey,&#xA;    GeografiaKey,&#xA;    VendedorKey,&#xA;    OrderID,&#xA;    Cantidad,&#xA;    Precio,&#xA;    CostoFlete&#xA;)&#xA;SELECT&#xA;    C.ClienteKey,&#xA;    P.ProductoKey,&#xA;    F.FechaKey,&#xA;    G.GeografiaKey,&#xA;    V.VendedorKey,&#xA;    S.OrderID,&#xA;    S.Cantidad,&#xA;    S.Precio,&#xA;    S.CostoFlete&#xA;FROM dbo.STG_Ventas S&#xA;INNER JOIN dbo.DIM_CLIENTE C&#xA;    ON S.CustomerID = C.CustomerID&#xA;INNER JOIN dbo.DIM_PRODUCTO P&#xA;    ON S.ProductID = P.ProductID&#xA;INNER JOIN dbo.DIM_FECHA F&#xA;    ON S.FechaVenta = F.Fecha&#xA;INNER JOIN dbo.DIM_GEOGRAFIA G&#xA;    ON S.Ciudad = G.Ciudad&#xA;    AND S.Estado = G.Estado&#xA;    AND S.Region = G.Region&#xA;    AND S.CodigoPostal = G.CodigoPostal&#xA;INNER JOIN dbo.DIM_VENDEDOR V&#xA;    ON S.SellerID = V.SellerID;&#xA;&#xA;IF (SELECT COUNT(*) FROM dbo.FACT_VENTAS)&#xA;    &lt;&gt; (SELECT COUNT(*) FROM dbo.STG_Ventas)&#xA;BEGIN&#xA;    ROLLBACK TRANSACTION;&#xA;    THROW 50001, 'Error en la cantidad de ventas cargadas.', 1;&#xA;END;&#xA;&#xA;COMMIT TRANSACTION;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{64220825-B486-44B7-9036-5C8314F4CE88}"
+      DTS:From="Package\00 - Limpieza STG_Ventas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\01 - Extraccion y carga STG_Ventas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{85781CF9-983F-404B-8381-161188551919}"
+      DTS:From="Package\01 - Extraccion y carga STG_Ventas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\02 - Carga de dimensiones" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{19D40557-6593-4D36-A894-B8B5A5079B26}"
+      DTS:From="Package\02 - Carga de dimensiones"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\03 - Carga FACT_VENTAS" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\00 - Limpieza STG_Ventas"
+          TopLeft="375.499979784092,65.2999995841583" />
+        <NodeLayout
+          Size="246.4,41.6"
+          Id="Package\01 - Extraccion y carga STG_Ventas"
+          TopLeft="358.269211194264,147.933332304623" />
+        <NodeLayout
+          Size="203.2,41.6"
+          Id="Package\02 - Carga de dimensiones"
+          TopLeft="374.294851344303,219.133331809507" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\03 - Carga FACT_VENTAS"
+          TopLeft="379.999979237717,292.933331296311" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="479.284595489178,106.899999584158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.0333327204651"
+              Start="0,0"
+              End="0,33.5333327204651">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5333327204651" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="478.682031269283,189.533332304623">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5999995048837"
+              Start="0,0"
+              End="0,22.0999995048837">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0999995048837" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="479.14741529101,260.733331809507">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.1999994868043"
+              Start="0,0"
+              End="0,24.6999994868043">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.6999994868043" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\01 - Extraccion y carga STG_Ventas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="229.6,41.6"
+          Id="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales"
+          TopLeft="409.166644310787,96.1999993310372" />
+        <NodeLayout
+          Size="244,41.6"
+          Id="Package\01 - Extraccion y carga STG_Ventas\Transformacion - Limpieza de datos"
+          TopLeft="407.499977735182,179.399998752475" />
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas"
+          TopLeft="437.499976096055,267.799998137752" />
+        <EdgeLayout
+          Id="Package\01 - Extraccion y carga STG_Ventas.Paths[Salida de origen de OLE DB]"
+          TopLeft="526.733311022984,137.799999331037">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.5999994214375"
+              Start="0,0"
+              End="0,34.0999994214375">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.0999994214375" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\01 - Extraccion y carga STG_Ventas.Paths[Salida de columna derivada]"
+          TopLeft="529.099976915619,220.999998752475">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.7999993852774"
+              Start="0,0"
+              End="0,39.2999993852774">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.2999993852774" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\01 - Extraccion y carga STG_Ventas\Origen - Ventas Transaccionales">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\01 - Extraccion y carga STG_Ventas\Destino - STG_Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
