@@ -1,0 +1,75 @@
+OrderID,CustomerID,NombreCliente,TipoCliente,ProductID,NombreProducto,Categoria,Subcategoria,FechaVenta,Ciudad,Estado,Region,CodigoPostal,SellerID,NombreVendedor,Cantidad,Precio,CostoFlete,FechaEntregaEstimada,FechaEntregaReal,Calificacion
+ORD-1001,CLI-01, Juan Perez ,Empresa,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-03-01,Lima,Lima,Cercado,15001,VEN-01,Carlos Gomez,5,45.00,10.00,2026-03-06,2026-03-05,5
+ORD-1002,CLI-02,Maria Lopez,Final,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-03-02,Arequipa,Arequipa,Arequipa,04001,VEN-02,Ana Torres,2,12.50,5.00,2026-03-07,2026-03-09,3
+ORD-1003,CLI-01,Juan Perez,Empresa,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-03-03,Lima,Lima,Cercado,15001,VEN-01,Carlos Gomez,10,12.00,8.00,2026-03-08,2026-03-07,4
+ORD-1004,CLI-03,  Tech Solutions ,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-03-04,Trujillo,La Libertad,Trujillo,13001,VEN-01,Carlos Gomez,20,28.00,15.00,2026-03-10,2026-03-14,2
+ORD-1005,CLI-07,Robotica Peru EIRL,Empresa,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-03-05,Lima,Lima,San Isidro,15036,VEN-01,Carlos Gomez,5,7.00,10.00,2026-03-09,2026-03-11,1
+ORD-1006,CLI-12,Andrea Paredes,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-03-06,Lima,Lima,Cercado,15001,VEN-03,Luis Ramirez,2,7.00,10.00,2026-03-10,2026-03-12,3
+ORD-1007,CLI-02,Maria Lopez,Final,PROD-05,Sensor Ultrasonico HC-SR04,Sensores,Distancia,2026-03-08,Arequipa,Arequipa,Arequipa,04001,VEN-04,Rosa Quispe,2,7.60,7.80,2026-03-15,2026-03-17,1
+ORD-1008,CLI-01,Juan Perez,Empresa,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-03-14,Lima,Lima,Cercado,15001,VEN-01,Carlos Gomez,15,13.20,12.00,2026-03-18,2026-03-20,1
+ORD-1009,CLI-04,Luis Vargas,Final,PROD-04,Raspberry Pi Pico,Microcontroladores,Placas,2026-03-15,Lima,Lima,Miraflores,15074,VEN-01,Carlos Gomez,3,17.10,12.00,2026-03-19,2026-03-18,5
+ORD-1010,CLI-11,Mecatronica del Sur SRL,Empresa,PROD-06,Modulo Rele 5V,Actuadores,Reles,2026-03-16,Cusco,Cusco,Cusco,08001,VEN-02,Ana Torres,1,6.50,19.50,2026-03-23,null,null
+ORD-1011,CLI-10,Carla Rojas,Final,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-03-17,Arequipa,Arequipa,Arequipa,04001,VEN-04,Rosa Quispe,4,5.50,15.60,2026-03-24,2026-03-24,5
+ORD-1012,CLI-03,Tech Solutions,Empresa,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-03-18,Trujillo,La Libertad,Trujillo,13001,VEN-05,Jorge Salazar,5,5.22,13.00,2026-03-25,2026-03-24,3
+ORD-1013,CLI-10,Carla Rojas,Final,PROD-05,Sensor Ultrasonico HC-SR04,Sensores,Distancia,2026-03-19,Arequipa,Arequipa,Arequipa,04001,VEN-05,Jorge Salazar,2,8.40,7.80,2026-03-26,2026-03-31,3
+ORD-1014,CLI-07,Robotica Peru EIRL,Empresa,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-03-20,Lima,Lima,San Isidro,15036,VEN-01,Carlos Gomez,10,42.75,5.00,2026-03-24,2026-03-26,2
+ORD-1015,CLI-06,Rosa Medina,Final,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-03-23,Piura,Piura,Piura,20001,VEN-01,Carlos Gomez,3,47.25,10.40,2026-03-30,2026-03-30,null
+ORD-1016,CLI-02,Maria Lopez,Final,PROD-08,Pantalla OLED 0.96,Displays,Pantallas,2026-03-31,Arequipa,Arequipa,Arequipa,04001,VEN-04,Rosa Quispe,3,16.50,7.80,2026-04-07,2026-04-06,5
+ORD-1017,CLI-04,Luis Vargas,Final,PROD-07,Servomotor SG90,Actuadores,Motores,2026-04-02,Lima,Lima,Miraflores,15074,VEN-05,Jorge Salazar,2,9.45,12.00,2026-04-06,2026-04-05,5
+ORD-1018,CLI-02,Maria Lopez,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-04-04,Arequipa,Arequipa,Arequipa,04001,VEN-04,Rosa Quispe,1,7.00,19.50,2026-04-11,2026-04-10,4
+ORD-1019,CLI-09,Innova Labs,Empresa,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-04-06,Huancayo,Junin,Huancayo,12001,VEN-04,Rosa Quispe,50,45.00,13.00,2026-04-13,2026-04-10,4
+ORD-1020,CLI-09,Innova Labs,Empresa,PROD-04,Raspberry Pi Pico,Microcontroladores,Placas,2026-04-10,Huancayo,Junin,Huancayo,12001,VEN-05,Jorge Salazar,3,18.00,19.50,2026-04-17,2026-04-16,5
+ORD-1021,CLI-07,Robotica Peru EIRL,Empresa,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-04-10,Lima,Lima,San Isidro,15036,VEN-04,Rosa Quispe,2,7.35,8.00,2026-04-14,2026-04-13,4
+ORD-1022,CLI-05,Electro Andina SAC,Empresa,PROD-08,Pantalla OLED 0.96,Displays,Pantallas,2026-04-11,Cusco,Cusco,Cusco,08001,VEN-04,Rosa Quispe,10,15.00,13.00,2026-04-18,2026-04-17,4
+ORD-1023,CLI-08,Diego Flores,Final,PROD-08,Pantalla OLED 0.96,Displays,Pantallas,2026-04-13,Chiclayo,Lambayeque,Chiclayo,14001,VEN-01,Carlos Gomez,3,16.50,10.40,2026-04-20,2026-04-18,3
+ORD-1024,CLI-04,Luis Vargas,Final,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-04-14,Lima,Lima,Miraflores,15074,VEN-01,Carlos Gomez,2,45.00,10.00,2026-04-18,2026-04-18,5
+ORD-1025,CLI-11,Mecatronica del Sur SRL,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-04-14,Cusco,Cusco,Cusco,08001,VEN-01,Carlos Gomez,10,28.00,10.40,2026-04-21,2026-04-26,3
+ORD-1026,CLI-09,Innova Labs,Empresa,PROD-04,Raspberry Pi Pico,Microcontroladores,Placas,2026-04-17,Huancayo,Junin,Huancayo,12001,VEN-01,Carlos Gomez,25,18.00,15.60,2026-04-24,2026-04-24,5
+ORD-1027,CLI-10,Carla Rojas,Final,PROD-05,Sensor Ultrasonico HC-SR04,Sensores,Distancia,2026-04-18,Arequipa,Arequipa,Arequipa,04001,VEN-05,Jorge Salazar,1,7.60,10.40,2026-04-25,2026-04-23,3
+ORD-1028,CLI-03,Tech Solutions,Empresa,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-04-19,Trujillo,La Libertad,Trujillo,13001,VEN-01,Carlos Gomez,10,12.00,19.50,2026-04-26,2026-04-24,5
+ORD-1029,CLI-05,Electro Andina SAC,Empresa,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-04-22,Cusco,Cusco,Cusco,08001,VEN-01,Carlos Gomez,5,5.50,7.80,2026-04-29,2026-04-29,null
+ORD-1030,CLI-01,Juan Perez,Empresa,PROD-07,Servomotor SG90,Actuadores,Motores,2026-04-24,Lima,Lima,Cercado,15001,VEN-03,Luis Ramirez,10,8.55,5.00,2026-04-28,2026-04-26,4
+ORD-1031,CLI-05,Electro Andina SAC,Empresa,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-04-27,Cusco,Cusco,Cusco,08001,VEN-01,Carlos Gomez,50,13.20,15.60,2026-05-04,2026-05-05,2
+ORD-1032,CLI-08,Diego Flores,Final,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-04-30,Chiclayo,Lambayeque,Chiclayo,14001,VEN-05,Jorge Salazar,1,5.78,10.40,2026-05-07,2026-05-07,5
+ORD-1033,CLI-07,Robotica Peru EIRL,Empresa,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-05-01,Lima,Lima,San Isidro,15036,VEN-03,Luis Ramirez,20,12.00,10.00,2026-05-05,2026-05-04,3
+ORD-1034,CLI-06,Rosa Medina,Final,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-05-02,Piura,Piura,Piura,20001,VEN-04,Rosa Quispe,1,45.00,19.50,2026-05-09,2026-05-10,2
+ORD-1035,CLI-02,Maria Lopez,Final,PROD-05,Sensor Ultrasonico HC-SR04,Sensores,Distancia,2026-05-06,Arequipa,Arequipa,Arequipa,04001,VEN-04,Rosa Quispe,2,8.80,6.50,2026-05-13,2026-05-18,4
+ORD-1036,CLI-04,Luis Vargas,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-06,Lima,Lima,Miraflores,15074,VEN-01,Carlos Gomez,4,6.65,6.00,2026-05-10,2026-05-10,4
+ORD-1037,CLI-01,Juan Perez,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-05-08,Lima,Lima,Cercado,15001,VEN-05,Jorge Salazar,10,30.80,15.00,2026-05-12,2026-05-13,2
+ORD-1038,CLI-07,Robotica Peru EIRL,Empresa,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-05-09,Lima,Lima,San Isidro,15036,VEN-02,Ana Torres,10,5.78,10.00,2026-05-13,2026-05-13,4
+ORD-1039,CLI-07,Robotica Peru EIRL,Empresa,PROD-04,Raspberry Pi Pico,Microcontroladores,Placas,2026-05-09,Lima,Lima,San Isidro,15036,VEN-02,Ana Torres,3,19.80,5.00,2026-05-13,null,null
+ORD-1040,CLI-11,Mecatronica del Sur SRL,Empresa,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-12,Cusco,Cusco,Cusco,08001,VEN-05,Jorge Salazar,10,7.00,7.80,2026-05-19,2026-05-19,4
+ORD-1041,CLI-05,Electro Andina SAC,Empresa,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-14,Cusco,Cusco,Cusco,08001,VEN-04,Rosa Quispe,10,7.00,10.40,2026-05-21,2026-05-20,3
+ORD-1042,CLI-10,Carla Rojas,Final,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-05-15,Arequipa,Arequipa,Arequipa,04001,VEN-02,Ana Torres,3,11.40,19.50,2026-05-22,2026-05-27,3
+ORD-1043,CLI-06,Rosa Medina,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-15,Piura,Piura,Piura,20001,VEN-03,Luis Ramirez,1,6.65,19.50,2026-05-22,2026-05-22,5
+ORD-1044,CLI-04,Luis Vargas,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-17,Lima,Lima,Miraflores,15074,VEN-02,Ana Torres,4,7.35,15.00,2026-05-21,2026-05-20,3
+ORD-1045,CLI-04,Luis Vargas,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-17,Lima,Lima,Miraflores,15074,VEN-03,Luis Ramirez,2,7.00,8.00,2026-05-21,2026-05-20,5
+ORD-1046,CLI-08,Diego Flores,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-19,Chiclayo,Lambayeque,Chiclayo,14001,VEN-04,Rosa Quispe,5,7.70,10.40,2026-05-26,2026-05-26,null
+ORD-1047,CLI-07,Robotica Peru EIRL,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-05-20,Lima,Lima,San Isidro,15036,VEN-04,Rosa Quispe,1,28.00,12.00,2026-05-24,2026-05-25,2
+ORD-1048,CLI-01,Juan Perez,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-05-22,Lima,Lima,Cercado,15001,VEN-01,Carlos Gomez,5,28.00,12.00,2026-05-26,2026-05-27,2
+ORD-1049,CLI-12,Andrea Paredes,Final,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-05-23,Lima,Lima,Cercado,15001,VEN-01,Carlos Gomez,3,12.00,15.00,2026-05-27,2026-05-27,4
+ORD-1050,CLI-01,Juan Perez,Empresa,PROD-07,Servomotor SG90,Actuadores,Motores,2026-05-25,Lima,Lima,Cercado,15001,VEN-04,Rosa Quispe,20,9.90,15.00,2026-05-29,2026-05-30,null
+ORD-1051,CLI-09,Innova Labs,Empresa,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-05-26,Huancayo,Junin,Huancayo,12001,VEN-01,Carlos Gomez,3,12.60,10.40,2026-06-02,2026-06-07,2
+ORD-1052,CLI-01,Juan Perez,Empresa,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-05-26,Lima,Lima,Cercado,15001,VEN-02,Ana Torres,3,5.50,8.00,2026-05-30,2026-05-30,4
+ORD-1053,CLI-03,Tech Solutions,Empresa,PROD-07,Servomotor SG90,Actuadores,Motores,2026-05-30,Trujillo,La Libertad,Trujillo,13001,VEN-02,Ana Torres,50,8.55,15.60,2026-06-06,2026-06-09,4
+ORD-1054,CLI-06,Rosa Medina,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-05-31,Piura,Piura,Piura,20001,VEN-02,Ana Torres,4,7.70,6.50,2026-06-07,2026-06-06,4
+ORD-1055,CLI-03,Tech Solutions,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-06-03,Trujillo,La Libertad,Trujillo,13001,VEN-01,Carlos Gomez,2,30.80,19.50,2026-06-10,2026-06-07,3
+ORD-1056,CLI-02,Maria Lopez,Final,PROD-06,Modulo Rele 5V,Actuadores,Reles,2026-06-04,Arequipa,Arequipa,Arequipa,04001,VEN-03,Luis Ramirez,1,7.15,7.80,2026-06-11,2026-06-11,4
+ORD-1057,CLI-06,Rosa Medina,Final,PROD-08,Pantalla OLED 0.96,Displays,Pantallas,2026-06-05,Piura,Piura,Piura,20001,VEN-01,Carlos Gomez,5,14.25,13.00,2026-06-12,2026-06-12,5
+ORD-1058,CLI-11,Mecatronica del Sur SRL,Empresa,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-06-06,Cusco,Cusco,Cusco,08001,VEN-03,Luis Ramirez,15,12.60,6.50,2026-06-13,2026-06-18,2
+ORD-1059,CLI-06,Rosa Medina,Final,PROD-08,Pantalla OLED 0.96,Displays,Pantallas,2026-06-08,Piura,Piura,Piura,20001,VEN-05,Jorge Salazar,2,14.25,6.50,2026-06-15,2026-06-13,5
+ORD-1060,CLI-05,Electro Andina SAC,Empresa,PROD-05,Sensor Ultrasonico HC-SR04,Sensores,Distancia,2026-06-09,Cusco,Cusco,Cusco,08001,VEN-02,Ana Torres,3,8.00,13.00,2026-06-16,2026-06-21,3
+ORD-1061,CLI-06,Rosa Medina,Final,PROD-08,Pantalla OLED 0.96,Displays,Pantallas,2026-06-11,Piura,Piura,Piura,20001,VEN-04,Rosa Quispe,2,15.00,7.80,2026-06-18,2026-06-21,2
+ORD-1062,CLI-12,Andrea Paredes,Final,PROD-06,Modulo Rele 5V,Actuadores,Reles,2026-06-11,Lima,Lima,Cercado,15001,VEN-03,Luis Ramirez,2,7.15,10.00,2026-06-15,2026-06-14,4
+ORD-1063,CLI-12,Andrea Paredes,Final,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-06-12,Lima,Lima,Cercado,15001,VEN-02,Ana Torres,2,5.50,8.00,2026-06-16,2026-06-18,1
+ORD-1064,CLI-05,Electro Andina SAC,Empresa,PROD-08,Pantalla OLED 0.96,Displays,Pantallas,2026-06-13,Cusco,Cusco,Cusco,08001,VEN-03,Luis Ramirez,3,16.50,19.50,2026-06-20,2026-06-20,4
+ORD-1065,CLI-03,Tech Solutions,Empresa,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-06-16,Trujillo,La Libertad,Trujillo,13001,VEN-01,Carlos Gomez,5,7.00,15.60,2026-06-23,2026-06-26,3
+ORD-1066,CLI-07,Robotica Peru EIRL,Empresa,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-06-17,Lima,Lima,San Isidro,15036,VEN-05,Jorge Salazar,10,47.25,8.00,2026-06-21,2026-06-19,5
+ORD-1067,CLI-08,Diego Flores,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-06-17,Chiclayo,Lambayeque,Chiclayo,14001,VEN-05,Jorge Salazar,1,7.35,10.40,2026-06-24,2026-06-25,1
+ORD-1068,CLI-07,Robotica Peru EIRL,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-06-20,Lima,Lima,San Isidro,15036,VEN-01,Carlos Gomez,5,30.80,15.00,2026-06-24,2026-06-23,4
+ORD-1069,CLI-10,Carla Rojas,Final,PROD-10,Sensor PIR HC-SR501,Sensores,Movimiento,2026-06-21,Arequipa,Arequipa,Arequipa,04001,VEN-04,Rosa Quispe,5,5.78,13.00,2026-06-28,2026-06-29,1
+ORD-1070,CLI-04,Luis Vargas,Final,PROD-02,Sensor DHT11,Sensores,Temperatura,2026-06-23,Lima,Lima,Miraflores,15074,VEN-03,Luis Ramirez,2,11.40,6.00,2026-06-27,null,null
+ORD-1071,CLI-08,Diego Flores,Final,PROD-09,Protoboard 830 puntos,Accesorios,Prototipado,2026-06-25,Chiclayo,Lambayeque,Chiclayo,14001,VEN-03,Luis Ramirez,3,7.00,6.50,2026-07-02,2026-07-07,3
+ORD-1072,CLI-09,Innova Labs,Empresa,PROD-01,Arduino Uno R3,Microcontroladores,Placas,2026-06-26,Huancayo,Junin,Huancayo,12001,VEN-01,Carlos Gomez,3,45.00,7.80,2026-07-03,2026-07-06,2
+ORD-1073,CLI-11,Mecatronica del Sur SRL,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-06-27,Cusco,Cusco,Cusco,08001,VEN-03,Luis Ramirez,2,30.80,13.00,2026-07-04,2026-07-09,3
+ORD-1074,CLI-09,Innova Labs,Empresa,PROD-03,ESP32 Wi-Fi,Microcontroladores,Placas,2026-06-27,Huancayo,Junin,Huancayo,12001,VEN-01,Carlos Gomez,1,28.00,13.00,2026-07-04,2026-07-01,4
